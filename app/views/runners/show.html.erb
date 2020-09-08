@@ -1,0 +1,12 @@
+<h1><%= @runner.name %></h1>
+Details:
+<ul>
+  <li>Username: <%= @runner.username %></li>
+  <li>Email: <%= @runner.email %></li>
+  <li>Age: <%= @runner.age %></li>
+  <li>Gender: <%= @runner.gender %></li>
+  <li>Level: <%= @runner.rank_category.name %></li>
+  <li>Rank: <%= @runner.rank %></li>
+</ul>
+<%= link_to "Edit Profile", edit_runner_path(@runner)  %>
+<%= button_to "Delete Account", runner_path(@runner), {method: :delete, data: {confirm: "Are you sure you want to delete your account?"}} %>

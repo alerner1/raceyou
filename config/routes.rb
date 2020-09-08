@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :races
   resources :registrations
   resources :rank_categories
+  resources :friendships
+  resources :stats
 
   post '/login', to: 'sessions#login', as: 'login'
   get '/sessions/new', to: 'sessions#new', as: 'new_login'

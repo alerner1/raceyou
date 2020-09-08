@@ -1,0 +1,22 @@
+<h1>Create Account</h1>
+
+<!-- not using a partial here since the forms might be pretty different 
+for new and edit -->
+
+<%= form_for @runner do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %><br>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+  <%= f.label :password %> 
+  <%= f.text_field :password %><br> <!-- make password hidden -->
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :age %>
+  <%= f.number_field :age %><br>
+  <%= f.label :gender %> <!-- might make this some kind of m/f/other dropdown -->
+  <%= f.text_field :gender %><br>
+
+  <%= f.submit %>
+
+<% end %>

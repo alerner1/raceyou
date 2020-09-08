@@ -1,12 +1,12 @@
 # Faker gem guide: https://github.com/faker-ruby/faker
 
+RankCategory.destroy_all
 Registration.destroy_all
 Friendship.destroy_all
 Stat.destroy_all
 Race.destroy_all
 Runner.destroy_all
 
-# seed these, don't destroy them because they're the same every time
 RankCategory.create(name: "bronze")
 RankCategory.create(name: "silver")
 RankCategory.create(name: "gold")

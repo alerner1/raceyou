@@ -1,0 +1,6 @@
+<h1>All Runners</h1>
+<ul>
+  <% @runners.each do |runner| %>
+    <li><%= link_to runner.name, runner_path(runner) %></li>
+  <% end  %>
+</ul>
