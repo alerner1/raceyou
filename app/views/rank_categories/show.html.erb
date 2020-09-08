@@ -1,0 +1,6 @@
+<h1><%= @rank_category.name %></h1>
+<ol>
+  <% @rank_category.runners.each do |runner| %>
+    <li><%= link_to runner.name, runner_path(runner) %></li>
+  <% end %>
+</ol>

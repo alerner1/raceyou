@@ -1,11 +1,10 @@
 # Faker gem guide: https://github.com/faker-ruby/faker
 
-RankCategory.destroy_all
 Registration.destroy_all
 Friendship.destroy_all
-Stat.destroy_all
 Race.destroy_all
 Runner.destroy_all
+RankCategory.destroy_all
 
 RankCategory.create(name: "bronze")
 RankCategory.create(name: "silver")
@@ -33,10 +32,6 @@ end
 
 6.times do
   Registration.create(runner: Runner.all.sample, race: Race.all.sample, completed: false)
-end
-
-10.times do
-  Stat.create(stat_type: "speed", statistic: rand(1..10), unit: "mph", runner: Runner.all.sample)
 end
 
 10.times do 

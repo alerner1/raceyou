@@ -1,0 +1,4 @@
+<h1>Choose a Skill Level:</h1>
+<% @rank_categories.each do |level| %>
+  <%= link_to level.name, rank_category_path(level) %>
+<% end %>

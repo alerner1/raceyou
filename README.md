@@ -42,20 +42,11 @@
 
 * literally just the name
 
-# Stat attributes:
+# Basic Functionality/Views:
 
-These are just the attributes for now -- we'll need to iron them out later once we figure out what format this will take. 
-
-* Stat Type (speed, distance, etc)
-* Statistic (the actual number)
-* Unit
-* Runner ID
-
-# Functionality:
-
-* create a new account ('/runners/new')
-* login ('/sessions/login')
-* logout ('/logout')
+  * create a new account ('/runners/new')
+  * login ('/sessions/login')
+  * logout ('/logout')
 
   # Races
 
@@ -73,19 +64,34 @@ These are just the attributes for now -- we'll need to iron them out later once 
   * delete their own account
   
   * view a list of the races they've signed up for
-    * mark the race as completed and input their finish time
+    * mark the race as completed and input their finish time/distance
   * view a list of the races they've created
     * edit or delete a race as long as no one else has signed up
   
   * view a list of their friends
     * delete a friend
 
+  # Rank Categories
+
+  * view a list of all runners in each category, sorted by rank within that category
+
+# Complex Methods
+
+  * assign runners to a category based on their race records
+  * allow runners to challenge those within their category
+  * allow runners to challenge their friends
+  * when a runner wins or loses against another runner in a race, their ranking changes accordingly (start by implementing for two-person races, then get the algorithm to accommodate more competitors)
+  
+# Stretch Goals
+
+  * integrate workout history and race records with Strava
+  * view workout/race route on Google Maps
+
 --
 
 # A's confusing list of todos (ignore)
 
 * add units to race length, elevation changes?
-* fix the stats table to actually match what a stat should look like
 
 runnerscontroller DONE
   * still need to be able to see relationship related info, like stats, friends, registrations, etc
@@ -98,7 +104,6 @@ friendshipscontroller (for when you add someone as a friend) DONE
 
 ok we'll save these for later:
 rankcategoriescontroller (for showing the different category options and who's in them)
-statscontroller (for when you input a new stat/race data)
 
 button syntax for posterity:
 <%= button_to "Like", post_path(@post), method: :patch, params: { :post => {:likes => (@post.likes + 1) } }%>
