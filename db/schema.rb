@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_180849) do
+ActiveRecord::Schema.define(version: 2020_09_08_201955) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "runner_id"
@@ -52,17 +52,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_180849) do
     t.index ["rank_category_id"], name: "index_runners_on_rank_category_id"
   end
 
-  create_table "stats", force: :cascade do |t|
-    t.string "stat_type"
-    t.float "statistic"
-    t.string "unit"
-    t.integer "runner_id", null: false
-    t.index ["runner_id"], name: "index_stats_on_runner_id"
-  end
-
   add_foreign_key "friendships", "runners"
   add_foreign_key "registrations", "races"
   add_foreign_key "registrations", "runners"
   add_foreign_key "runners", "rank_categories"
-  add_foreign_key "stats", "runners"
 end
