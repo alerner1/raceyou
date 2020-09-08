@@ -1,3 +1,24 @@
+# NEXT STEPS
+
+  # Problems to fix:
+
+  * as long as you're logged in you can edit or delete anyone's profile -- this is very bad!!!
+    * fix so you can only edit/delete your own
+  * add an attribute to the Race model so it knows who created it
+    * you should only be allowed to edit/delete races you created
+  * add an attribute to the Registration model so the Runner can mark as completed and input their finish time or distance (manually, at least for now)
+  * button to sign up for a race should change to removing yourself from the race if you've already signed up
+  * button to add friend should change to delete friend (with accompanying functionality) if you're already friends
+  * adjust column names/types to eliminate ambiguity when it comes to units
+  * validations
+  * make sure flash[:errors] and flash[:success] show up as appropriate and redirects make sense
+
+  # Views to fix:
+
+  * should be able to see who's signed up for a given race
+
+--
+
 # Domain model:
 
 * a Runner can have many Races through Registrations
@@ -94,16 +115,14 @@
 * add units to race length, elevation changes?
 
 runnerscontroller DONE
-  * still need to be able to see relationship related info, like stats, friends, registrations, etc
+  * still need to be able to see relationship related info, like friends, registrations, etc
 racescontroller DONE
   * still need to be able to see who's signed up etc
 registrationscontroller DONE
   * need to show the user they've signed up successfully
   * need to add a way to destroy registrations
 friendshipscontroller (for when you add someone as a friend) DONE
-
-ok we'll save these for later:
-rankcategoriescontroller (for showing the different category options and who's in them)
+rankcategoriescontroller (for showing the different category options and who's in them) DONE
 
 button syntax for posterity:
 <%= button_to "Like", post_path(@post), method: :patch, params: { :post => {:likes => (@post.likes + 1) } }%>
