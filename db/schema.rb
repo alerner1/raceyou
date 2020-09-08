@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2020_09_08_145914) do
 
-  create_table "friends", force: :cascade do |t|
+  create_table "friendships", force: :cascade do |t|
     t.integer "runner_id"
     t.integer "friend_id"
-    t.index ["friend_id"], name: "index_friends_on_friend_id"
-    t.index ["runner_id"], name: "index_friends_on_runner_id"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["runner_id"], name: "index_friendships_on_runner_id"
   end
 
   create_table "races", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_145914) do
     t.index ["runner_id"], name: "index_stats_on_runner_id"
   end
 
-  add_foreign_key "friends", "runners"
+  add_foreign_key "friendships", "runners"
   add_foreign_key "registrations", "races"
   add_foreign_key "registrations", "runners"
   add_foreign_key "runners", "rank_categories"
