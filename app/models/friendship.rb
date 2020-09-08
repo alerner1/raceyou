@@ -5,6 +5,8 @@ class Friendship < ApplicationRecord
   def self.create_reciprocal_for_ids(runner_id, friend_id)
     runner_friendship = Friendship.create(runner_id: runner_id, friend_id: friend_id)
     friend_friendship = Friendship.create(runner_id: friend_id, friend_id: runner_id)
+
+    # returns array of both friendships
     [runner_friendship, friend_friendship]
   end
 
