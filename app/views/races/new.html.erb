@@ -1,0 +1,15 @@
+<h1>Create New Race</h1>
+<%= form_for @race do |f| %>
+  <%= f.label :race_type %>
+  <%= f.text_field :race_type %><br>
+  <%= f.label :length %>
+  <%= f.text_field :length %><br>
+  <%= f.label :elevation_increase %>
+  <%= f.number_field :elevation_increase %><br>
+  <%= f.label :elevation_decrease %>
+  <%= f.number_field :elevation_decrease %><br>
+  Expires:
+  <%= f.date_select :expiration_date %><br>
+
+  <%= f.submit %>
+<% end %>

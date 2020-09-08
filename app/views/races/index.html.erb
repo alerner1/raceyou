@@ -1,0 +1,6 @@
+<h1>All Races</h1>
+<ul>
+  <% @races.each do |race| %>
+    <li><%= link_to race.length, race_path(race) %></li>
+  <% end  %>
+</ul>
