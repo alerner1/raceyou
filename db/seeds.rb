@@ -23,6 +23,22 @@ RankCategory.create(name: "grandmaster")
                 age: rand(1..99),
                 gender: Faker::Gender.type,
                 rank_category: RankCategory.all.sample,
-                rank: rand(1..10)
-              )
+                rank: rand(1..10))
+end
+
+# in_date_period = random date in current year
+3.times do 
+  Race.create(race_type: ["distance", "speed"].sample, length: "#{rand(1..26)} miles", elevation_increase: rand(1..500), elevation_decrease:rand(1..500), expiration_date: Faker::Date.in_date_period)
+end
+
+6.times do
+  Registration.create(runner: Runner.all.sample, race: Race.all.sample, completed: false)
+end
+
+10.times do
+  Stat.create(stat_type: "speed", statistic: rand(1..10), unit: "mph", runner: Runner.all.sample)
+end
+
+10.times do 
+  Friendship.create(runner: Runner.all.sample, friend: Runner.all.sample)
 end

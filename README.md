@@ -1,24 +1,5 @@
-# README
+# TODOS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* add units to race length, elevation changes?
+* fix the stats table to actually match what a stat should look like
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
