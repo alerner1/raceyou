@@ -21,7 +21,7 @@ class RunnersController < ApplicationController
 
   # works, if this breaks fix the default for rank_category
   def create
-    @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender))
+    @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender, :rank_category_id))
     
     if @runner.valid?
       session[:runner_id] = @runner.id

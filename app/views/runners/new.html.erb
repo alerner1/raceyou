@@ -17,6 +17,7 @@ for new and edit -->
   <%= f.label :gender %> <!-- might make this some kind of m/f/other dropdown -->
   <%= f.text_field :gender %><br>
 
+  <%= f.hidden_field(:rank_category_id, :value => RankCategory.find_by(name: "bronze").id) %>
   <%= f.submit %>
 
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_201955) do
+ActiveRecord::Schema.define(version: 2020_09_08_205838) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "runner_id"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_201955) do
     t.string "name"
     t.integer "age"
     t.string "gender"
-    t.integer "rank_category_id", default: 1
+    t.integer "rank_category_id"
     t.integer "rank"
     t.index ["rank_category_id"], name: "index_runners_on_rank_category_id"
   end
