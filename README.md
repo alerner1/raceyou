@@ -110,6 +110,7 @@
 # Complex Methods
 
   * assign runners to a category based on their race records
+  ^ DONE
   * allow runners to challenge those within their category
   * allow runners to challenge their friends
   * when a runner wins or loses against another runner in a race, their ranking changes accordingly (start by implementing for two-person races, then get the algorithm to accommodate more competitors)

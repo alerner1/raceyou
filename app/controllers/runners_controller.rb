@@ -22,9 +22,10 @@ class RunnersController < ApplicationController
   
   def create
     
-    params[:runner][:rank_category_id] = Runner.categorize(params[:runner][:five_k_mins], params[:runner][:five_k_secs])
+    params[:runner][:rank_category_id] = Runner.categorize_on_signup(params[:runner][:five_k_mins], params[:runner][:five_k_secs])
+    params[:runner][:points] = Runner.assign_initial_points(params[:runner][:rank_category_id])
 
-    @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender, :rank_category_id, :five_k_mins, :five_k_secs))
+    @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender, :rank_category_id, :five_k_mins, :five_k_secs, :points))
     
     if @runner.valid?
       session[:runner_id] = @runner.id
@@ -47,7 +48,7 @@ class RunnersController < ApplicationController
     if @runner.update(runner_params(:username, :email, :password, :name, :gender))
       redirect_to runner_path(@runner)
     else
-      flash[:errors] = @snail.errors.full_messages
+      flash[:errors] = @runner.errors.full_messages
       flash[:params] = params
       redirect_to edit_runner_path(@runner)
     end
