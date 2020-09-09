@@ -21,7 +21,10 @@ class RunnersController < ApplicationController
 
   
   def create
-    @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender, :rank_category_id))
+    
+    params[:runner][:rank_category_id] = Runner.categorize(params[:runner][:five_k_mins], params[:runner][:five_k_secs])
+
+    @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender, :rank_category_id, :five_k_mins, :five_k_secs))
     
     if @runner.valid?
       session[:runner_id] = @runner.id
