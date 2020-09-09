@@ -1,3 +1,4 @@
+
 <h1>Race details:</h1>
 <ul>
   <li>Type: <%= @race.race_type %></li>
@@ -7,7 +8,15 @@
   <li>Expires: <%= @race.expiration_date %></li>
 </ul>
 
+
+
 <!-- IT WORKS! I mean, we need some message to confirm the signup but it works! -->
 <%= button_to "Sign up for this race", registrations_path, method: :post, params: { :registration => {:race_id => @race.id, :runner_id => session[:runner_id] } }%>
+
+<%# Added Flash message when sign up successful%>
+<% if flash[:success] %>
+
+    <h1><%= flash[:success] %></h1>
+  <% end %>
 
 <%= button_to "Delete Race", race_path(@race), {method: :delete, data: {confirm: "Are you sure you want to delete this race?"}} %>

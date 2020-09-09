@@ -1,3 +1,6 @@
+<%# canni -> added this to show who you're logged in as%>
+<h1>Hi, <%= @current_user.name %>! </h1>
+
 <h1><%= @runner.name %></h1>
 Details:
 <ul>
@@ -9,9 +12,11 @@ Details:
   <li>Rank: <%= @runner.rank %></li>
 </ul>
 
-<% @runner.races.each do |race| %>
-  <%= race.length %><br>
+<%# canni -> added link_to and link to edit registration form where you can input finish time and change to complete, still working on it%>
+<% @runner.races.each do |race| %> 
+  <%= link_to race.length, edit_registration_path %><br> 
 <% end %>
+
 
 <h3><%= @runner.name %> is friends with:</h3>
 <% @runner.friends.each do |friend| %>
@@ -19,8 +24,12 @@ Details:
 <% end %>
 
 <!-- it works it works it works! -->
+<%# Added Flash message when succesful%>
 <%= button_to "Add As Friend", friendships_path, method: :post, params: { :friendship => {:friend_id => @runner.id } } %>
+<% if flash[:success] %>
 
+    <h1><%= flash[:success] %></h1>
+  <% end %>
 <!-- OBVIOUSLY MAKE SURE THESE OPTIONS ONLY SHOW UP IF IT'S YOUR OWN PROFILE -->
 <%= link_to "Edit Profile", edit_runner_path(@runner)  %>
-<%= button_to "Delete Account", runner_path(@runner), {metho: :delete, data: {confirm: "Are you sure you want to delete your account?"}} %>
+<%= button_to "Delete Account", runner_path(@runner), {method: :delete, data: {confirm: "Are you sure you want to delete your account?"}} %>

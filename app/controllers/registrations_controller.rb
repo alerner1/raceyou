@@ -18,6 +18,20 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    # @snail = Snail.find(params[:id])
+    if @registration.update(registration_params)
+      redirect_to runner_path(@runner)
+    else
+      flash[:errors] = @registration.errors.full_messages
+      redirect_to edit_registration_path(@registration)
+    end 
+    
+  end 
+
   private
 
   def registration_params
