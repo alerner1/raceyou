@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
-  
+  before_action :find_registration, only: :destroy
+
   # not actually sure if this is necessary
   def new
     @registration = Registration.new
@@ -22,7 +23,6 @@ class RegistrationsController < ApplicationController
   end
 
   def update
-    # @snail = Snail.find(params[:id])
     if @registration.update(registration_params)
       redirect_to runner_path(@runner)
     else
@@ -32,7 +32,17 @@ class RegistrationsController < ApplicationController
     
   end 
 
+  def destroy
+    @registration.destroy
+    flash[:success] = "You have been removed from this race."
+    redirect_to(request.referer)
+  end
+
   private
+
+  def find_registration
+    @registration = Registration.find(params[:id])
+  end
 
   def registration_params
     params.require(:registration).permit(:race_id, :runner_id)

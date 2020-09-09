@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_070755) do
     t.string "name"
     t.integer "age"
     t.string "gender"
-    t.integer "rank_category_id", null: false
+    t.integer "rank_category_id"
     t.integer "rank"
     t.index ["rank_category_id"], name: "index_runners_on_rank_category_id"
   end

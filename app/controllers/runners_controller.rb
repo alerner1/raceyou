@@ -19,7 +19,7 @@ class RunnersController < ApplicationController
     @runner = Runner.new
   end
 
-  # works, if this breaks fix the default for rank_category
+  
   def create
     @runner = Runner.create(runner_params(:username, :email, :password, :name, :age, :gender, :rank_category_id))
     

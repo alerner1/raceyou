@@ -2,16 +2,27 @@
 
   # Problems to fix:
 
-  * assigned to A: as long as you're logged in you can edit or delete anyone's profile -- this is very bad!!!
-    * fix so you can only edit/delete your own
+ 
+
   * assigned to C: add an attribute to the Race model so it knows who created it
     * you should only be allowed to edit/delete races you created
   * assigned to C: add an attribute to the Registration model so the Runner can mark as completed and input their finish time or distance (manually, at least for now)
-  * assigned to A: button to sign up for a race should change to removing yourself from the race if you've already signed up
-  * assigned to A: button to add friend should change to delete friend (with accompanying functionality) if you're already friends
   * assigned to C: adjust column names/types to eliminate ambiguity when it comes to units
-  * validations
+
   * make sure flash[:errors] and flash[:success] show up as appropriate and redirects make sense
+  ^ MOSTLY DONE 
+  * validations
+
+  
+  * assigned to A: button to sign up for a race should change to removing yourself from the race if you've already signed up
+  ^ DONE
+  * assigned to A: button to add friend should change to delete friend (with accompanying functionality) if you're already friends
+  ^ DONE
+    * assigned to A: button should not show up at all if it's your own profile
+  ^ DONE
+  * assigned to A: as long as you're logged in you can edit or delete anyone's profile -- this is very bad!!!
+    * fix so you can only edit/delete your own
+  ^ DONE
 
   # Views to fix:
 

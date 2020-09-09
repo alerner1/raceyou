@@ -1,5 +1,9 @@
 <%# canni -> added this to show who you're logged in as%>
-<h1>Hi, <%= @current_user.name %>! </h1>
+<%# A -- changed so it only shows up if you're viewing your own profile %>
+
+<% if @runner.id == @current_user.id %>
+  <h1>Hi, <%= @current_user.name %>! </h1>
+<% end %>
 
 <h1><%= @runner.name %></h1>
 Details:
@@ -13,6 +17,8 @@ Details:
 </ul>
 
 <%# canni -> added link_to and link to edit registration form where you can input finish time and change to complete, still working on it%>
+<!--  final version of this: race.length itself should link to the race show page
+      can have a button next to it for removing yourself from the race, IF IT'S YOUR OWN PROFILE ONLY -->
 <% @runner.races.each do |race| %> 
   <%= link_to race.length, edit_registration_path %><br> 
 <% end %>
@@ -23,13 +29,19 @@ Details:
   <%= friend.name %><br>
 <% end %>
 
-<!-- it works it works it works! -->
-<%# Added Flash message when succesful%>
-<%= button_to "Add As Friend", friendships_path, method: :post, params: { :friendship => {:friend_id => @runner.id } } %>
-<% if flash[:success] %>
+<% if !@current_user.friends.include?(@runner) && @current_user != @runner %>
+  <%= button_to "Add As Friend", friendships_path, method: :post, params: { :friendship => {:friend_id => @runner.id } } %>
+<% end %>
 
-    <h1><%= flash[:success] %></h1>
-  <% end %>
-<!-- OBVIOUSLY MAKE SURE THESE OPTIONS ONLY SHOW UP IF IT'S YOUR OWN PROFILE -->
-<%= link_to "Edit Profile", edit_runner_path(@runner)  %>
-<%= button_to "Delete Account", runner_path(@runner), {method: :delete, data: {confirm: "Are you sure you want to delete your account?"}} %>
+<% if @current_user.friends.include?(@runner) %>
+  <%= button_to "Unfriend", friendship_path(@runner), {method: :delete, params: { :friendship => {:friend_id => @runner.id}}, data: {confirm: "Are you sure you want to unfriend #{@runner.name}?"}} %>
+<% end %>
+
+<% if flash[:success] %>
+  <h1><%= flash[:success] %></h1>
+<% end %>
+
+<% if @runner.id == @current_user.id %>
+  <%= link_to "Edit Profile", edit_runner_path(@runner)  %>
+  <%= button_to "Delete Account", runner_path(@runner), {method: :delete, data: {confirm: "Are you sure you want to delete your account?"}} %>
+<% end %>
