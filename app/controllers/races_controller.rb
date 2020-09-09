@@ -41,7 +41,6 @@ class RacesController < ApplicationController
         @race.end_of_race
       end
       redirect_to race_path(@race)
-      byebug
     else
       flash[:errors] = @race.errors.full_messages
       flash[:params] = params
