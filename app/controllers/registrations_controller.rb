@@ -35,6 +35,12 @@ class RegistrationsController < ApplicationController
     
   end 
 
+  def destroy
+    @registration.destroy
+    flash[:success] = "You have been removed from this race."
+    redirect_to(request.referer)
+  end
+
   private
 
   def find_registration

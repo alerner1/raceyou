@@ -16,7 +16,8 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    Friendship.destroy_reciprocal_for_ids(current_user.id, params[:friend_id])
+    Friendship.destroy_reciprocal_for_ids(current_user.id, params[:friendship][:friend_id])
+    flash[:success] = "You are no longer friends."
     redirect_to(request.referer)
   end
 

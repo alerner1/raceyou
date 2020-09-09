@@ -1,6 +1,6 @@
 class RacesController < ApplicationController
   # don't need to be logged in to view all the races or a race's profile page
-  skip_before_action :authorized, only: [:index, :show] 
+  skip_before_action :authorized, only: [:index] 
   before_action :find_race, only: [:show, :destroy]
 
   # i don't think you should be able to edit the race, only destroy it 
