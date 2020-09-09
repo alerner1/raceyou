@@ -14,24 +14,23 @@ RankCategory.create(name: "diamond")
 RankCategory.create(name: "master")
 RankCategory.create(name: "grandmaster")
 
-5.times do 
+15.times do 
   Runner.create(username: Faker::Superhero.descriptor, 
                 email: Faker::Internet.email, 
                 password_digest: Runner.digest(Faker::Lorem.word), 
                 name: Faker::Name.name, 
                 age: rand(1..99),
                 gender: Faker::Gender.type,
-                rank_category: RankCategory.all.sample,
-                rank: rand(1..10))
+                rank_category: RankCategory.all.sample)
 end
 
 # in_date_period = random date in current year
-3.times do 
-  Race.create(race_type: ["distance", "speed"].sample, length: "#{rand(1..26)} miles", elevation_increase: rand(1..500), elevation_decrease:rand(1..500), expiration_date: Faker::Date.in_date_period)
+10.times do 
+  Race.create(race_type: ["distance", "sped"].sample, length: "#{rand(1..26)} miles", elevation_increase: rand(1..500), elevation_decrease:rand(1..500), expiration_date: Faker::Date.in_date_period)
 end
 
-6.times do
-  Registration.create(runner: Runner.all.sample, race: Race.all.sample, completed: false)
+60.times do
+  Registration.create(runner: Runner.all.sample, race: Race.all.sample, completed: [true, false].sample, finish_time: rand(10..30))
 end
 
 10.times do 

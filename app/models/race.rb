@@ -10,9 +10,18 @@ class Race < ApplicationRecord
     # need to adjust runner's ranking accordingly. 
     
     # for all runners in that race (@race.runners)
+    assign_places
+
     self.runners.each do |runner|
       runner.adjust_ranking(self)
     end
   end
 
+  def assign_places
+    sorted_registrations = self.registrations.sort_by{ |r| r.finish_time}
+    self.registrations.each do |r|
+      r.update(place: sorted_registrations.index(r) + 1)
+    end
+    
+  end
 end

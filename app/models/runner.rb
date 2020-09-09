@@ -15,12 +15,13 @@ class Runner < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def points=(@points) # custom writer so they can't be < 0 at any time
-    if @points <0
-      @points = 0
+  def points=(points) # custom writer so they can't be < 0 at any time
+    if points < 0
+      points = 0
     end
-    points = @points
+    write_attribute(:points, points)
   end
+
   def self.categorize_on_signup(mins, secs)
     
     case mins.to_i
@@ -127,12 +128,12 @@ class Runner < ApplicationRecord
           point_differential -= category_difference * 2
         end
       end
-
-     end  
-    # use point_differential to get new points total
-    self.points += point_differential
+      # use point_differential to get new points total
+      self.update(points: self.points + point_differential)
+      
+      # then call method that assigns a category based on points total
+      self.categorize_by_points
+    end  
     
-    # then call method that assigns a category based on points total
-    self.categorize_by_points
   end
 end
