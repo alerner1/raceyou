@@ -21,7 +21,7 @@ RankCategory.create(name: "grandmaster")
                 name: Faker::Name.name, 
                 age: rand(1..99),
                 gender: Faker::Gender.type,
-                rank_category: RankCategory.all.sample)
+                rank_category: RankCategory.find_by(name: "bronze"))
 end
 
 # in_date_period = random date in current year
