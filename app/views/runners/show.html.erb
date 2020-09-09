@@ -12,10 +12,20 @@ Details:
   <li>Rank: <%= @runner.rank %></li>
 </ul>
 
-<%# canni -> added link_to and link to edit registration form where you can input finish time and change to complete, still working on it%>
-<% @runner.races.each do |race| %> 
-  <%= link_to race.length, edit_registration_path %><br> 
-<% end %>
+<%# Updating finish time and complete works%>
+
+<% @runner.registrations.each do |registration| %> 
+    <% if registration.completed %>
+      <b><%= "Completed"  %></b>
+    <%= registration.finish_time %>
+    <%= registration.race.length%>
+    <%= link_to "Edit race", edit_registration_path(registration) %>
+    <% else%><br>
+   <div><%= registration.race.length %> 
+    <%= link_to "Edit race", edit_registration_path(registration) %></div>
+    
+   <% end %>
+<% end%>
 
 
 <h3><%= @runner.name %> is friends with:</h3>

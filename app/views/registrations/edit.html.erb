@@ -1,1 +1,13 @@
 <h1> Input your completed race stats: </h1>
+
+<%= form_for @registration do |f| %>
+
+  <%= f.label :completed %>
+  <%= f.check_box :completed %><br>
+
+  <%= f.label :finish_time %>
+  <%= f.time_field :finish_time %><br>
+
+
+  <%= f.submit %>
+<% end %>
