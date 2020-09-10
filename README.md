@@ -183,6 +183,7 @@ button to create new race... maybe on the top right of the nav bar even?
 logout button, also top right or something
 method to sort runners for rank categories
 add migration for profile photo
-
+something's up with the race types -- need to clarify what they mean and modify new race form accordingly
+maybe a grid for the friends display on the runner show page
 
 careful seeding
