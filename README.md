@@ -12,6 +12,7 @@
   * make sure flash[:errors] and flash[:success] show up as appropriate and redirects make sense
   ^ MOSTLY DONE 
   * validations
+  ^ will work on these as soon as final versions of models are in
 
   
   * assigned to A: button to sign up for a race should change to removing yourself from the race if you've already signed up
@@ -111,9 +112,14 @@
 
   * assign runners to a category based on their race records
   ^ DONE
-  * allow runners to challenge those within their category
-  * allow runners to challenge their friends
   * when a runner wins or loses against another runner in a race, their ranking changes accordingly (start by implementing for two-person races, then get the algorithm to accommodate more competitors)
+  ^ DONE
+
+  * allow runners to challenge those within their category
+  ^ almost certainly skipping this
+  * allow runners to challenge their friends
+  ^ this too
+
   
 # Stretch Goals
 
@@ -138,3 +144,17 @@ rankcategoriescontroller (for showing the different category options and who's i
 
 button syntax for posterity:
 <%= button_to "Like", post_path(@post), method: :patch, params: { :post => {:likes => (@post.likes + 1) } }%>
+
+let's figure out the flow for demonstrating the app and modify views accordingly:
+we'll start by going to a random page, oops we're not logged in, let's actually just create an account
+check out our profile page, we've been sorted into a category and we start out with points at the bottom of the category 
+might be worth signing up for some races, let's see what's out there
+friend the person who created it, they seem cool
+and while we're at it, might as well create a race of our own
+now we're signed up for two races
+for the race that already existed before, we'll preseed with some finish times by other runners
+pretend we've finished it too, input our own finish time
+now logout, log back in as the person who created that race
+check out their points and ranking compared to others
+they see oh cool everyone's done with the race let's close it out
+now go back to the rankings, cool our point value has changed, it's all been adjusted a bit
