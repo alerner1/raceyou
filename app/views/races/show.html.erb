@@ -36,7 +36,5 @@
 <%# delete race button only for creator works!. Could be better, name has to be the same because of string data type%>
 <% if @current_user.name == @race.created_by %>
   <%= button_to "Delete Race", race_path(@race), {method: :delete, data: {confirm: "Are you sure you want to delete this race?"}} %>
-
-  
 <% end %>
 
