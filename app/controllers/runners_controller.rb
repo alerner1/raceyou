@@ -21,7 +21,6 @@ class RunnersController < ApplicationController
 
   
   def create
-    
     params[:runner][:rank_category_id] = Runner.categorize_on_signup(params[:runner][:five_k_mins], params[:runner][:five_k_secs])
     params[:runner][:points] = Runner.assign_initial_points(params[:runner][:rank_category_id])
 

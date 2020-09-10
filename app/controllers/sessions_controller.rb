@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def login
-    runner = Runner.find_by(name: params[:session][:name])
+    runner = Runner.find_by(email: params[:session][:email])
 
     if runner && runner.authenticate(params[:session][:password])
       session[:runner_id] = runner.id
