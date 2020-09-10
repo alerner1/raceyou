@@ -1,4 +1,80 @@
 <h1>Choose a Skill Level:</h1>
-<% @rank_categories.each do |level| %>
-  <%= link_to level.name, rank_category_path(level) %>
-<% end %>
+
+<div class="d-flex flex-column">
+  <div class="d-flex">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="bronze-tab" data-toggle="tab" href="#bronze" role="tab" aria-controls="bronze" aria-selected="true">Bronze</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="silver-tab" data-toggle="tab" href="#silver" role="tab" aria-controls="silver" aria-selected="false">Silver</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" id="gold-tab" data-toggle="tab" href="#gold" role="tab" aria-controls="gold" aria-selected="false">Gold</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="platinum-tab" data-toggle="tab" href="#platinum" role="tab" aria-controls="platinum" aria-selected="false">Platinum</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="diamond-tab" data-toggle="tab" href="#diamond" role="tab" aria-controls="diamond" aria-selected="false">Diamond</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="master-tab" data-toggle="tab" href="#master" role="tab" aria-controls="master" aria-selected="false">Master</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="grandmaster-tab" data-toggle="tab" href="#grandmaster" role="tab" aria-controls="grandmaster" aria-selected="false">Grandmaster</a>
+    </li> 
+  </ul>
+  </div>
+  <div class="tab-content profile-tab" id="myTabContent">
+    <% @rank_categories.each do |level| %>
+      <% if level.name == "bronze"%>
+      <div class="tab-pane fade show active" id="<%= level.name %>" role="tabpanel" aria-labelledby="<%= level.name %>">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Points</th>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% level.runners.each do |runner| %>
+              <tr>
+                <td><%= runner.points %></td>
+                <td><%= link_to runner.name, runner_path(runner) %></td>
+                <td><%= runner.age %></td>
+                <td><%= runner.gender %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% else %>
+      <div class="tab-pane fade" id="<%= level.name %>" role="tabpanel" aria-labelledby="<%= level.name %>">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Points</th>
+              <th scope="col">Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% level.runners.each do |runner| %>
+              <tr>
+                <td><%= runner.points %></td>
+                <td><%= link_to runner.name, runner_path(runner) %></td>
+                <td><%= runner.age %></td>
+                <td><%= runner.gender %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
+    <% end %> 
+  </div>
+</div>

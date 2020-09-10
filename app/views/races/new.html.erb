@@ -1,15 +1,15 @@
-<h1>Create New Race</h1>
-<%= form_for @race do |f| %>
-  <%= f.label :race_type %>
-  <%= f.text_field :race_type %><br>
-  <%= f.label :length %>
-  <%= f.text_field :length %><br>
-  <%= f.label :elevation_increase %>
-  <%= f.number_field :elevation_increase %><br>
-  <%= f.label :elevation_decrease %>
-  <%= f.number_field :elevation_decrease %><br>
-  Expires:
-  <%= f.date_select :expiration_date %><br>
-
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1>New Race</h1>
+      <%= bootstrap_form_for @race do |f| %>
+        <%= f.text_field :race_type %>
+        <%= f.text_field :length %>
+        <%= f.number_field :elevation_increase %>
+        <%= f.number_field :elevation_decrease %>
+        <%= f.date_field :expiration_date, label: "Expires" %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

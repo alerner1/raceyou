@@ -154,32 +154,34 @@ check out our profile page, we've been sorted into a category and we start out w
 bootstrapped --> 'runners/show'
 might be worth signing up for some races, let's see what's out there
 bootstrapped --> '/races'
-'races/show' (should show runners and their categories/points and completed?)
+bootstrapped --> 'races/show' (should show runners and their categories/points and completed?)
 friend the person who created it, they seem cool
-'runners/show'
+bootstrapped --> 'runners/show'
 and while we're at it, might as well create a race of our own
-'races/new'
+bootstrapped --> 'races/new'
 now we're signed up for two races
-'runners/show'
+bootstrapped --> 'runners/show'
 for the race that already existed before, we'll preseed with some finish times by other runners
 pretend we've finished it too, input our own finish time
-'registrations/edit'
+WAITING ON MERGE 'registrations/edit'
 now logout, log back in as the person who created that race
 'sessions/logout'
 'sessions/login'
 check out their points and ranking compared to others
-'races/show'
+bootstrapped --> 'races/show'
 they see oh cool everyone's done with the race let's close it out
-'races/edit'
+WAITING ON MERGE 'races/edit'
 now go back to the rankings, cool our point value has changed, it's all been adjusted a bit
-'races/show'
-'/rank_categories'
-'rank_categories/show'
+bootstrapped --> 'races/show'
+bootstrapped --> '/rank_categories'
+
 
 
 add friend and edit profile and delete account buttons 
-
-
+race buttons on race show page
+button to create new race... maybe on the top right of the nav bar even?
+logout button, also top right or something
+method to sort runners for rank categories
 add migration for profile photo
 
 

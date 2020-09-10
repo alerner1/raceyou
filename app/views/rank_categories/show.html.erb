@@ -1,8 +1,0 @@
-<h1><%= @rank_category.name %></h1>
-
-<!-- make this a nice pretty table -->
-<ol>
-  <% Runner.sort_by_points(@rank_category.runners).each do |runner| %>
-    <li><%= runner.points %><%= link_to runner.name, runner_path(runner) %></li>
-  <% end %>
-</ol>
