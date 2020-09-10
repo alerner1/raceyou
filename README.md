@@ -146,15 +146,41 @@ button syntax for posterity:
 <%= button_to "Like", post_path(@post), method: :patch, params: { :post => {:likes => (@post.likes + 1) } }%>
 
 let's figure out the flow for demonstrating the app and modify views accordingly:
+IF TIME: HOMEPAGE, NAVBAR
 we'll start by going to a random page, oops we're not logged in, let's actually just create an account
+bootstrapped --> 'sessions/new'
+bootstrapped --> 'runners/new'
 check out our profile page, we've been sorted into a category and we start out with points at the bottom of the category 
+bootstrapped --> 'runners/show'
 might be worth signing up for some races, let's see what's out there
+'/races'
+'races/show' (should show runners and their categories/points and completed?)
 friend the person who created it, they seem cool
+'runners/show'
 and while we're at it, might as well create a race of our own
+'races/new'
 now we're signed up for two races
+'runners/show'
 for the race that already existed before, we'll preseed with some finish times by other runners
 pretend we've finished it too, input our own finish time
+'registrations/edit'
 now logout, log back in as the person who created that race
+'sessions/logout'
+'sessions/login'
 check out their points and ranking compared to others
+'races/show'
 they see oh cool everyone's done with the race let's close it out
+'races/edit'
 now go back to the rankings, cool our point value has changed, it's all been adjusted a bit
+'races/show'
+'/rank_categories'
+'rank_categories/show'
+
+
+add friend and edit profile and delete account buttons 
+
+
+add migration for profile photo
+
+
+careful seeding
