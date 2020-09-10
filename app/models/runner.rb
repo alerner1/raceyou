@@ -15,12 +15,13 @@ class Runner < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  # def points=(@points) # custom writer so they can't be < 0 at any time
-  #   if @points <0
-  #     @points = 0
-  #   end
-  #   points = @points
-  # end
+  def points=(points) # custom writer so they can't be < 0 at any time
+    if points
+      points = 0 unless points > 0
+    end
+    write_attribute(:points, points)
+  end
+
   def self.categorize_on_signup(mins, secs)
     
     case mins.to_i
@@ -46,7 +47,7 @@ class Runner < ApplicationRecord
   def self.assign_initial_points(category_id)
     category = RankCategory.find(category_id)
 
-    case category
+    case category.name
     when "bronze"
       100
     when "silver"
@@ -83,6 +84,10 @@ class Runner < ApplicationRecord
     end
   end
 
+  def self.sort_by_points(runners)
+    runners.sort_by{ |r| r.points }
+  end
+
   def adjust_ranking(race)
     # get their place
     registration = self.registrations.find_by(race_id: race.id)
@@ -90,11 +95,21 @@ class Runner < ApplicationRecord
     category = self.rank_category
     points = self.points
 
+    # def an easier way to do this -- just preserve the initial race.runners array by assigning it to a different variable
+    # pull point and category values from there
+    # but whatever not changing it now, will do it if there's time for cleanup
+    all_previous_points = []
+    all_previous_categories = []
+    race.runners.each do |runner|
+      all_previous_points[runner.id] = runner.points
+      all_previous_categories[runner.id] = runner.rank_category
+    end
+
     race.runners.each do |runner|
       other_registration = runner.registrations.find_by(race_id: race.id)
       other_place = other_registration.place
-      other_category = runner.rank_category
-      other_points = runner.points
+      other_category = all_previous_categories[runner.id]
+      other_points = all_previous_points[runner.id]
       point_differential = 0
 
       # their place is a greater number than mine, aka i beat them
@@ -127,12 +142,12 @@ class Runner < ApplicationRecord
           point_differential -= category_difference * 2
         end
       end
-
-     end  
-    # use point_differential to get new points total
-    self.points += point_differential
+      # use point_differential to get new points total
+      self.update(points: self.points + point_differential)
+      
+      # then call method that assigns a category based on points total
+      self.categorize_by_points
+    end  
     
-    # then call method that assigns a category based on points total
-    self.categorize_by_points
   end
 end

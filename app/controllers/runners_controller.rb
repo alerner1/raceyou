@@ -45,7 +45,7 @@ class RunnersController < ApplicationController
   # what should we be able to edit? 
   # username, email, password, name, gender? just restrict age?
   def update
-    if @runner.update(runner_params(:username, :email, :password, :name, :gender))
+    if @runner.update(runner_params(:username, :email, :password, :name, :gender, :points))
       redirect_to runner_path(@runner)
     else
       flash[:errors] = @runner.errors.full_messages
