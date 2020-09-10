@@ -72,7 +72,7 @@
                 <td><%= race.length %></td>
                 <td><%= race.expiration_date.strftime("%m/%d/%Y") %></td>
                 <td><%= race.registrations.find_by(runner_id: @runner.id).completed %></td>
-                <td><%= race.registrations.find_by(runner_id: @runner.id).finish_time %></td>
+                <td><%= race.registrations.find_by(runner_id: @runner.id).finish_time_mins %> Minutes <%= race.registrations.find_by(runner_id: @runner.id).finish_time_secs %> Seconds </td>
               </tr>
             <% end %>
           </tbody>

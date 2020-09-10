@@ -4,3 +4,5 @@
     <li><%= link_to runner.name, runner_path(runner) %></li>
   <% end  %>
 </ul>
+
+<%= button_to "All races", races_path, method: :get %>

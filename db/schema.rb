@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_201834) do
+ActiveRecord::Schema.define(version: 2020_09_10_165417) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "runner_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_201834) do
     t.integer "elevation_decrease"
     t.datetime "expiration_date"
     t.boolean "closed", default: false
+    t.string "created_by"
   end
 
   create_table "rank_categories", force: :cascade do |t|
@@ -37,7 +38,8 @@ ActiveRecord::Schema.define(version: 2020_09_09_201834) do
     t.integer "race_id", null: false
     t.boolean "completed", default: false
     t.integer "place"
-    t.integer "finish_time"
+    t.integer "finish_time_mins"
+    t.integer "finish_time_secs"
     t.index ["race_id"], name: "index_registrations_on_race_id"
     t.index ["runner_id"], name: "index_registrations_on_runner_id"
   end
@@ -49,8 +51,8 @@ ActiveRecord::Schema.define(version: 2020_09_09_201834) do
     t.string "name"
     t.integer "age"
     t.string "gender"
-    t.integer "rank_category_id"
-    t.time "five_k_time"
+    t.integer "rank_category_id", null: false
+    t.integer "rank"
     t.integer "five_k_mins"
     t.integer "five_k_secs", default: 0
     t.integer "points", default: 0

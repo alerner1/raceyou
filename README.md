@@ -6,9 +6,11 @@
 
   * assigned to C: add an attribute to the Race model so it knows who created it
     * you should only be allowed to edit/delete races you created
+    ^DONE
   * assigned to C: add an attribute to the Registration model so the Runner can mark as completed and input their finish time or distance (manually, at least for now)
+  ^DONE
   * assigned to C: adjust column names/types to eliminate ambiguity when it comes to units
-
+  ^DONE
   * make sure flash[:errors] and flash[:success] show up as appropriate and redirects make sense
   ^ MOSTLY DONE 
   * validations
@@ -58,6 +60,7 @@
 * Elevation increase
 * Elevation decrease
 * Expiration date
+* created_by
 
 # Registration attributes:
 
@@ -65,6 +68,7 @@
 * Race ID
 * Completed (true/false)
 * Place (that the runner earned, calculated after race has expired)
+* Add finish time by minutes and seconds
 
 # Friendship attributes:
 
@@ -77,28 +81,28 @@
 
 # Basic Functionality/Views:
 
-  * create a new account ('/runners/new')
-  * login ('/sessions/login')
-  * logout ('/logout')
+  * create a new account ('/runners/new') DONE
+  * login ('/sessions/login') DONE
+  * logout ('/logout') 
 
   # Races
 
-  * view a list of all races ('/races')
-  * click on a race to view its show page ('/races/:id')
-  * sign up for a race from its show page
-  * back out of a race
+  * view a list of all races ('/races') DONE 
+  * click on a race to view its show page ('/races/:id') DONE
+  * sign up for a race from its show page DONE
+  * back out of a race DONE
   
   # Runners
 
-  * view a list of all runners ('/runners')
-  * click on a runner to view their profile ('/runners/:id')
-  * add another runner as a friend
-  * edit their own profile 
+  * view a list of all runners ('/runners') DONE
+  * click on a runner to view their profile ('/runners/:id') DONE
+  * add another runner as a friend DONE
+  * edit their own profile  
   * delete their own account
   
-  * view a list of the races they've signed up for
+  * view a list of the races they've signed up for DONE
     * mark the race as completed and input their finish time/distance
-  * view a list of the races they've created
+  * view a list of the races they've created DONE
     * edit or delete a race as long as no one else has signed up
   
   * view a list of their friends
