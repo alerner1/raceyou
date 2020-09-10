@@ -7,8 +7,9 @@
   * assigned to C: add an attribute to the Race model so it knows who created it
     * you should only be allowed to edit/delete races you created
   * assigned to C: add an attribute to the Registration model so the Runner can mark as completed and input their finish time or distance (manually, at least for now)
+  ^DONE
   * assigned to C: adjust column names/types to eliminate ambiguity when it comes to units
-
+  ^DONE
   * make sure flash[:errors] and flash[:success] show up as appropriate and redirects make sense
   ^ MOSTLY DONE 
   * validations

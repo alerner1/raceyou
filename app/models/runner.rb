@@ -15,12 +15,12 @@ class Runner < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def points=(@points) # custom writer so they can't be < 0 at any time
-    if @points <0
-      @points = 0
-    end
-    points = @points
-  end
+  # def points=(@points) # custom writer so they can't be < 0 at any time
+  #   if @points <0
+  #     @points = 0
+  #   end
+  #   points = @points
+  # end
   def self.categorize_on_signup(mins, secs)
     
     case mins.to_i
