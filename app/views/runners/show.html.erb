@@ -72,7 +72,7 @@
                 <td><%= race.length %></td>
                 <td><%= race.expiration_date %></td>
                 <td><%= race.registrations.find_by(runner_id: @runner.id).completed %></td>
-                <td><%= race.registrations.find_by(runner_id: @runner.id).finish_time %></td>
+                <td><%= race.registrations.find_by(runner_id: @runner.id).finish_time_mins %> Minutes <%= race.registrations.find_by(runner_id: @runner.id).finish_time_secs %> Seconds </td>
               </tr>
             <% end %>
           </tbody>
@@ -114,6 +114,21 @@ Details:
   <li>Points: <%= @runner.points %></li>
 </ul> -->
 
+<%# Updating finish time and complete works%>
+<!--
+<%# @runner.registrations.each do |registration| %> 
+    <%# if registration.completed %>
+      <b><%# "Completed"  %></b>
+    <%# registration.finish_time_mins %> <%#registration.finish_time_secs %>
+    <%# registration.race.length%>
+    <%# link_to "Edit race", edit_registration_path(registration) %>
+    <%# else%><br>
+   <div><%# registration.race.length %> 
+    <%# link_to "Edit race", edit_registration_path(registration) %></div>
+    
+   <%# end %>
+<%# end%>
+-->
 <%# canni -> added link_to and link to edit registration form where you can input finish time and change to complete, still working on it%>
 <!--  final version of this: race.length itself should link to the race show page
       can have a button next to it for removing yourself from the race, IF IT'S YOUR OWN PROFILE ONLY -->
@@ -235,7 +250,7 @@ Details:
                   <%= link_to race.length, race_path(race) %>
                 </div>
                 <div class="col-md-6">
-                  <%= race.registrations.find_by(runner_id: @runner.id).finish_time %>
+                  <%= race.registrations.find_by(runner_id: @runner.id).finish_time_mins %> <%= race.registrations.find_by(runner_id: @runner.id).finish_time_secs %>
                 </div>
               </div>
             <% end %>
