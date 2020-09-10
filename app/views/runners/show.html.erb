@@ -53,3 +53,5 @@ Details:
   <%= link_to "Edit Profile", edit_runner_path(@runner)  %>
   <%= button_to "Delete Account", runner_path(@runner), {method: :delete, data: {confirm: "Are you sure you want to delete your account?"}} %>
 <% end %>
+
+<%= button_to "Runner's Index", runners_path, method: :get %>
