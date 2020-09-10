@@ -1,36 +1,29 @@
-<h1>Create Account</h1>
-
-<%= form_for @runner do |f| %>
-  <div class="form-group">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h3>Create Account</h3>
+      <%= bootstrap_form_for(@runner) do |f| %>
+        <%= f.text_field :username %>
+        <%= f.email_field :email %>
+        <%= f.password_field :password %>
+        <%= f.text_field :name %>
+        <%= f.number_field :age %>
+        <%= f.form_group :gender, label: { text: "Gender:" } do %>
+          <%= f.radio_button :gender, "M", label: "M", inline: true %>
+          <%= f.radio_button :gender, "F", label: "F", inline: true %>
+          <%= f.radio_button :gender, "O", label: "Other", inline: true %>
+        <% end %>
+        <%= f.form_group :five_k_mins, label: { text: "What is your fastest 5K time?" } do %>
+          <%= f.radio_button :five_k_mins, 17, label: "17:59 or less" %>
+          <%= f.radio_button :five_k_mins, 19, label: "18:00-20:59" %>
+          <%= f.radio_button :five_k_mins, 22, label: "21:00-23:59" %>
+          <%= f.radio_button :five_k_mins, 25, label: "24:00-26:59" %>
+          <%= f.radio_button :five_k_mins, 28, label: "27:00-29:59" %>
+          <%= f.radio_button :five_k_mins, 31, label: "30:00-34:59" %>
+          <%= f.radio_button :five_k_mins, 36, label: "35:00 or more" %>
+        <% end %>
+        <%= f.submit "Sign Up" %>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">  
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="form-group">  
-    <%= f.label :password %> 
-    <%= f.password_field :password %> 
-  </div>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :age %>
-    <%= f.number_field :age %>
-  </div>
-  <div class="form-group form-check">
-    <%= f.label :gender %> <!-- might make this some kind of m/f/other dropdown -->
-    <%= f.radio_button :gender, "male" %>
-    <%= f.radio_button :gender, "female" %>
-    <%= f.radio_button :gender, "other" %>
-  </div>
-  <div class="form-group">
-    <%= f.label "What is your fastest 5K time?" %>
-    <%= f.number_field :five_k_mins %> minutes <%= f.number_field :five_k_secs %> seconds 
-  </div>
-  <%= f.submit %>
-
-<% end %>
+</div>

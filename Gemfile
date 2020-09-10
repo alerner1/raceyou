@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bcrypt'
 gem 'faker'
+gem 'bootstrap_form', '~> 4.0'
+gem 'jquery-rails'
+gem 'bootstrap', '~> 5.0.0.alpha1'
