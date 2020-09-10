@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_155834) do
+ActiveRecord::Schema.define(version: 2020_09_10_165417) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "runner_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_155834) do
     t.integer "elevation_decrease"
     t.datetime "expiration_date"
     t.boolean "closed", default: false
+    t.string "created_by"
   end
 
   create_table "rank_categories", force: :cascade do |t|

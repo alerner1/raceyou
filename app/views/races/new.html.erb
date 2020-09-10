@@ -10,6 +10,7 @@
   <%= f.number_field :elevation_decrease %><br>
   Expires:
   <%= f.date_select :expiration_date %><br>
-
+  <%= f.label :created_by %>
+  <%= f.text_field :created_by %>
   <%= f.submit %>
 <% end %>
