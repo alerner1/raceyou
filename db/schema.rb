@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_201834) do
+ActiveRecord::Schema.define(version: 2020_09_10_155834) do
 
   create_table "friendships", force: :cascade do |t|
     t.integer "runner_id"
@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 2020_09_09_201834) do
     t.integer "race_id", null: false
     t.boolean "completed", default: false
     t.integer "place"
-    t.time "finish_time"
+    t.integer "finish_time_mins"
+    t.integer "finish_time_secs"
     t.index ["race_id"], name: "index_registrations_on_race_id"
     t.index ["runner_id"], name: "index_registrations_on_runner_id"
   end

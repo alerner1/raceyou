@@ -26,7 +26,7 @@ class RegistrationsController < ApplicationController
   def update
     # Update works, just needed to show a message if successful!!
 
-    if @registration.update(registration_params(:completed, :finish_time, :runner_id))
+    if @registration.update(registration_params(:completed, :finish_time_mins, :finish_time_secs, :runner_id))
       redirect_to runner_path(@registration.runner)
     else
       flash[:errors] = @registration.errors.full_messages

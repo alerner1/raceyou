@@ -21,7 +21,7 @@ Details:
 <% @runner.registrations.each do |registration| %> 
     <% if registration.completed %>
       <b><%= "Completed"  %></b>
-    <%= registration.finish_time %>
+    <%= registration.finish_time_mins %>minutes <%= registration.finish_time_secs %>seconds
     <%= registration.race.length%>
     <%= link_to "Edit race", edit_registration_path(registration) %>
     <% else%><br>
