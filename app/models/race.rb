@@ -8,9 +8,7 @@ class Race < ApplicationRecord
   validates :length, numericality: {greater_than: 0}
 
   def end_of_race
-    
-    # for all runners in that race (@race.runners)
-    assign_places
+    self.assign_places
 
     self.runners.each do |runner|
       runner.adjust_ranking(self)
@@ -22,6 +20,5 @@ class Race < ApplicationRecord
     self.registrations.each do |r|
       r.update(place: sorted_registrations.index(r) + 1)
     end
-    
   end
 end

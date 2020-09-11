@@ -193,8 +193,8 @@ DONE --> change profile photo to either url signed up with or default
 DONE --> something's up with the race types -- need to clarify what they mean and modify new race form accordingly
 DONE --> get the 00 seconds to show properly 
 DONE --> units
-validations
-careful seeding
+DONE --> validations
+DONE --> careful seeding
 DONE --> sort places by seconds as well as minutes
 maybe a grid for the friends display on the runner show page
 DONE --> maybe fix the "race is now closed" thing but w/e

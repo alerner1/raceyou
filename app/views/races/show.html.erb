@@ -35,14 +35,19 @@
             <% else %>
               <p>Your time: <%= @current_user.registrations.find_by(race_id: @race.id).display_time %> </p>
             <% end %>
-            <% if @current_user.id == @race.created_by.to_i && @race.closed == false %>
-              <%= button_to "Close Race", race_path(@race), method: :patch, params: { :race => { :closed => true } }, class: "btn btn-outline-success my-2 my-sm-0 mx-2"%>
+            <% if @current_user.id == @race.created_by.to_i %>
+              <%= button_to "Close Race", race_path(@race), method: :patch, params: { :race => { :closed => true } }, class: "btn btn-outline-success my-2 my-sm-0 mx-2"%>         
               <%= button_to "Delete Race", race_path(@race), method: :delete, data: {confirm: "Are you sure you want to delete this race?"}, class: "btn btn-outline-success my-2 my-sm-0 mr-2" %>
             <% end %>
           </div>
         <% end %>
       <% else %>
-        This race is now closed.
+        <div class="d-flex">
+        <p class="mr-3">This race is now closed.</p>
+        <% if @current_user.id == @race.created_by.to_i %>
+          <%= button_to "Delete Race", race_path(@race), method: :delete, data: {confirm: "Are you sure you want to delete this race?"}, class: "btn btn-outline-success my-2 my-sm-0 mr-2" %>
+        <% end %>
+        </div>
       <% end %>
     </div>
     <% if @race.runners.length > 0 %>
@@ -62,7 +67,7 @@
               <td><%= runner.age %></td>
               <td><%= runner.registrations.find_by(race_id: @race.id).is_completed? %></td>
               <% if runner.registrations.find_by(race_id: @race.id).completed == true %>
-                <td><%= runner.registrations.find_by(race_id: @race.id).finish_time_mins %>:<%= runner.registrations.find_by(race_id: @race.id).finish_time_secs %></td>
+                <td><%= runner.registrations.find_by(race_id: @race.id).display_time %></td>
               <% else %>
                 <td>N/A</td>
               <% end %>

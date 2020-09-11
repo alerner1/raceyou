@@ -8,7 +8,7 @@ class Runner < ApplicationRecord
   has_secure_password
 
   #Validations
-  validates :name, :email, :age, :password, presence: true
+  validates :name, :email, :age, :password_digest, presence: true
   validates :name, uniqueness: true
   validates :email, uniqueness: true
   validates :age, numericality: {greater_than_or_equal_to: 12}
@@ -122,7 +122,6 @@ class Runner < ApplicationRecord
       # their place is a greater number than mine, aka i beat them
       if other_place > place 
         point_differential = 12
-
         # if they have a higher rank overall
         if other_points > points
           
@@ -151,7 +150,6 @@ class Runner < ApplicationRecord
       end
       # use point_differential to get new points total
       self.update(points: self.points + point_differential)
-      
       # then call method that assigns a category based on points total
       self.categorize_by_points
     end  

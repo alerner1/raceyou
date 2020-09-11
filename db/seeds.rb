@@ -70,15 +70,7 @@ photo_urls =
 photo_index = 0
 50.times do 
   rank = Runner.categorize_on_signup(rand(11..40), 0)
-  Runner.create(username: Faker::Superhero.unique.descriptor, 
-                email: Faker::Internet.unique.email, 
-                password_digest: Runner.digest(1234), 
-                name: "#{Faker::Name.unique.first_name} #{Faker::Name.unique.last_name}", 
-                age: rand(12..99),
-                gender: ["M", "F", "Other"].sample,
-                photo: photo_urls[photo_index],
-                rank_category_id: rank,
-                points: Runner.assign_initial_points(rank))
+  Runner.create(username: Faker::Superhero.unique.descriptor, email: Faker::Internet.unique.email, password_digest: Runner.digest(1234), name: "#{Faker::Name.unique.first_name} #{Faker::Name.unique.last_name}", age: rand(12..99), gender: ["M", "F", "Other"].sample, photo: photo_urls[photo_index], rank_category_id: rank, points: Runner.assign_initial_points(rank)) 
   photo_index += 1
 end
 

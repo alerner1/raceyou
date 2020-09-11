@@ -11,7 +11,8 @@ class RegistrationsController < ApplicationController
     @registration = Registration.create(registration_params(:runner_id, :race_id))
     
     if @registration.valid?
-      flash[:success] = "You have been signed up for this race!"
+      # creates bugs
+      # flash[:success] = "You have been signed up for this race!"
       redirect_to race_path(Race.find(@registration.race_id))
     else
       flash[:errors] = @registration.errors.full_messages
