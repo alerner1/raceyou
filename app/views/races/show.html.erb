@@ -41,7 +41,9 @@
             <% end %>
           </div>
         <% end %>
-     <% end %>
+      <% else %>
+        This race is now closed.
+      <% end %>
     </div>
     <% if @race.runners.length > 0 %>
       <table class="table">

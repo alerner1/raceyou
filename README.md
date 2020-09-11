@@ -197,4 +197,4 @@ validations
 careful seeding
 DONE --> sort places by seconds as well as minutes
 maybe a grid for the friends display on the runner show page
-maybe fix the "race is now closed" thing but w/e
+DONE --> maybe fix the "race is now closed" thing but w/e
