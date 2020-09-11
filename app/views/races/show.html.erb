@@ -43,29 +43,33 @@
         <% end %>
      <% end %>
     </div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Age</th>
-          <th scope="col">Completed?</th>
-          <th scope="col">Finish Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @race.runners.each do |runner| %>
+    <% if @race.runners.length > 0 %>
+      <table class="table">
+        <thead>
           <tr>
-            <td><%= link_to runner.name, runner_path(runner) %></td>
-            <td><%= runner.age %></td>
-            <td><%= runner.registrations.find_by(race_id: @race.id).is_completed? %></td>
-            <% if runner.registrations.find_by(race_id: @race.id).completed == true %>
-              <td><%= runner.registrations.find_by(race_id: @race.id).finish_time_mins %>:<%= runner.registrations.find_by(race_id: @race.id).finish_time_secs %></td>
-            <% else %>
-              <td>N/A</td>
-            <% end %>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Completed?</th>
+            <th scope="col">Finish Time</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @race.runners.each do |runner| %>
+            <tr>
+              <td><%= link_to runner.name, runner_path(runner) %></td>
+              <td><%= runner.age %></td>
+              <td><%= runner.registrations.find_by(race_id: @race.id).is_completed? %></td>
+              <% if runner.registrations.find_by(race_id: @race.id).completed == true %>
+                <td><%= runner.registrations.find_by(race_id: @race.id).finish_time_mins %>:<%= runner.registrations.find_by(race_id: @race.id).finish_time_secs %></td>
+              <% else %>
+                <td>N/A</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h5 class="mt-3 ml-2">None yet!</h5>
+    <% end %>
   </div>
 </div>

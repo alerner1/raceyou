@@ -192,10 +192,9 @@ DONE --> fix finish time input form
 DONE --> change profile photo to either url signed up with or default
 DONE --> something's up with the race types -- need to clarify what they mean and modify new race form accordingly
 DONE --> get the 00 seconds to show properly 
-units
+DONE --> units
 validations
 careful seeding
-sort places by seconds as well as minutes
+DONE --> sort places by seconds as well as minutes
 maybe a grid for the friends display on the runner show page
-add hours to finish time or just input 87 minutes or whatever.
 maybe fix the "race is now closed" thing but w/e
