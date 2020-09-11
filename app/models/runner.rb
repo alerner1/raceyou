@@ -89,6 +89,8 @@ class Runner < ApplicationRecord
     else # greater than 700 
       category = "grandmaster"
     end
+
+    self.update(rank_category: RankCategory.find_by(name: category))
   end
 
   def adjust_ranking(race)
