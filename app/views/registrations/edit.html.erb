@@ -1,13 +1,12 @@
-<h1> Input your completed race stats: </h1>
-
-<%= form_for @registration do |f| %>
-
-  <%= f.label :completed %>
-  <%= f.check_box :completed %><br>
-
-  <%= f.label "Your finish time" %>
-  <%= f.number_field :finish_time_mins %>minutes <%=f.number_field :finish_time_secs%> seconds <br>
-
-
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h3>Input your completed race stats:</h3>
+      <%= bootstrap_form_for(@registration) do |f| %>
+        <%= f.hidden_field :completed, :value => true %>
+        <%= f.number_field :finish_time_mins %>minutes <%=f.number_field :finish_time_secs%> seconds <br>
+        <%= f.submit "Save" %>
+      <% end %>
+    </div>
+  </div>
+</div>

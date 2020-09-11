@@ -18,7 +18,7 @@ class Race < ApplicationRecord
   end
 
   def assign_places
-    sorted_registrations = self.registrations.sort_by{ |r| r.finish_time}
+    sorted_registrations = self.registrations.sort_by{ |r| r.finish_time_mins}
     self.registrations.each do |r|
       r.update(place: sorted_registrations.index(r) + 1)
     end

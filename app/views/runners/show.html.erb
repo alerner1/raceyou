@@ -4,11 +4,26 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" class="rounded mx-auto">
   </div>
   <div class="d-flex flex-column justify-content-end w-50">
+    <% if flash[:success] %>
+      <%= flash[:success] %>
+    <% end %>
     <h1><%= @runner.name %></h1>
-    <p>
+    <div class="d-flex flex-row">
+    <p class="w-50">
       <span class="font-weight-bold">Level: <%= @runner.rank_category.name.capitalize %></span><br>
       Points: <%= @runner.points %>
     </p>
+    <% if !@current_user.friends.include?(@runner) && @current_user != @runner %>
+     <%= button_to "Add Friend", friendships_path, method: :post, params: { :friendship => {:friend_id => @runner.id } }, class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+    <% if @current_user.friends.include?(@runner) %>
+     <%= button_to "Unfriend", friendship_path(@runner), method: :delete, params: { :friendship => {:friend_id => @runner.id}}, data: {confirm: "Are you sure you want to unfriend #{@runner.name}?"}, class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+    <% if @runner.id == @current_user.id %>
+     <%= button_to "Edit Profile", edit_runner_path(@runner), method: :get, class: "btn btn-outline-success my-2 my-sm-0 mr-2" %>
+     <%= button_to "Delete Account", runner_path(@runner), method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, class: "btn btn-outline-success my-2 my-sm-0" %>
+    <% end %>
+    </div>
   </div>
 </div>
 
@@ -56,36 +71,47 @@
     </div>
     <div class="tab-content profile-tab" id="myTabContent">
       <div class="tab-pane fade show active" id="races" role="tabpanel" aria-labelledby="races">
-        <!-- probably want a row on the top for labels and then columns for items? -->
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Length</th>
-              <th scope="col">Expires</th>
-              <th scope="col">Completed?</th>
-              <th scope="col">Finish Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @runner.races.each do |race| %>
+        <% if @runner.races.length > 0 %>
+          <table class="table">
+            <thead>
               <tr>
-                <td><%= race.length %></td>
-                <td><%= race.expiration_date.strftime("%m/%d/%Y") %></td>
-                <td><%= race.registrations.find_by(runner_id: @runner.id).completed %></td>
-                <td><%= race.registrations.find_by(runner_id: @runner.id).finish_time_mins %> Minutes <%= race.registrations.find_by(runner_id: @runner.id).finish_time_secs %> Seconds </td>
+                <th scope="col">Length</th>
+                <th scope="col">Expires</th>
+                <th scope="col">Completed?</th>
+                <th scope="col">Finish Time</th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% @runner.races.each do |race| %>
+                <tr>
+                  <td><%= link_to race.length, race_path(race) %></td>
+                  <td><%= race.expiration_date.strftime("%m/%d/%Y") %></td>
+                  <td><%= race.registrations.find_by(runner_id: @runner.id).is_completed? %></td>
+                  <% if race.registrations.find_by(runner_id: @runner.id).completed == true %>
+                    <td><%= race.registrations.find_by(runner_id: @runner.id).finish_time_mins %>:<%= race.registrations.find_by(runner_id: @runner.id).finish_time_secs %></td>
+                  <% else %>
+                    <td>N/A</td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% else %>
+          <h5 class="mt-3">None yet!</h5>
+        <% end %>
       </div>
       <div class="tab-pane fade" id="friends" role="tabpanel" aria-labelledby="friends"> 
-        <table class="table">
-          <% @runner.friends.each do |friend| %>
-            <tr>
-              <td><%= link_to friend.name, runner_path(friend) %></td>
-            </tr>
-          <% end %>
-        </table>
+        <% if @runner.friends.length > 0 %>
+          <table class="table">
+            <% @runner.friends.each do |friend| %>
+              <tr>
+                <td><%= link_to friend.name, runner_path(friend) %></td>
+              </tr>
+            <% end %>
+          </table>
+        <% else %>
+          <h5 class="mt-3">None yet!</h5>
+        <% end %>
       </div>
     </div>
   </div>

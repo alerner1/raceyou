@@ -23,7 +23,6 @@ class Runner < ApplicationRecord
   end
 
   def self.categorize_on_signup(mins, secs)
-    
     case mins.to_i
     when 35..100
       category = "bronze"
@@ -149,5 +148,9 @@ class Runner < ApplicationRecord
       self.categorize_by_points
     end  
     
+  end
+
+  def self.sort_by_name #yes, first name, whatever
+    Runner.all.sort_by{ |r| r.name.capitalize }
   end
 end

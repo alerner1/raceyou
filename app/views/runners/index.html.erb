@@ -1,8 +1,23 @@
-<h1>All Runners</h1>
-<ul>
-  <% @runners.each do |runner| %>
-    <li><%= link_to runner.name, runner_path(runner) %></li>
-  <% end  %>
-</ul>
-
-<%= button_to "All races", races_path, method: :get %>
+<div class="m-5">
+  <h1 class="text-center">All Runners</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Level</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @runners.sort_by_name.each do |runner| %>
+        <tr>
+          <td><%= link_to runner.name, runner_path(runner) %></td>
+          <td><%= runner.age %></td>
+          <td><%= runner.gender %></td>
+          <td><%= runner.rank_category.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -40,7 +40,7 @@
             </tr>
           </thead>
           <tbody>
-            <% level.runners.each do |runner| %>
+            <% level.sort_by_points.each do |runner| %>
               <tr>
                 <td><%= runner.points %></td>
                 <td><%= link_to runner.name, runner_path(runner) %></td>

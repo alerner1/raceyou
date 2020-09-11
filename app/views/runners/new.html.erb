@@ -13,6 +13,7 @@
           <%= f.radio_button :gender, "F", label: "F", inline: true %>
           <%= f.radio_button :gender, "O", label: "Other", inline: true %>
         <% end %>
+        <%= f.text_field :photo, label: { text: "Link to profile photo (optional)"} %>
         <%= f.form_group :five_k_mins, label: { text: "What is your fastest 5K time?" } do %>
           <%= f.radio_button :five_k_mins, 17, label: "17:59 or less" %>
           <%= f.radio_button :five_k_mins, 19, label: "18:00-20:59" %>

@@ -24,10 +24,8 @@ class RegistrationsController < ApplicationController
   end
 
   def update
-    # Update works
-
-    if @registration.update(registration_params(:completed, :finish_time_mins, :finish_time_secs, :runner_id))
-      redirect_to runner_path(@registration.runner)
+    if @registration.update(registration_params(:completed, :finish_time_mins, :finish_time_secs))
+      redirect_to race_path(@registration.race)
     else
       flash[:errors] = @registration.errors.full_messages
       redirect_to edit_registration_path(@registration)
@@ -49,6 +47,5 @@ class RegistrationsController < ApplicationController
 
   def registration_params(*args)
     params.require(:registration).permit(*args)
-    # params.require(:registration).permit(:race_id, :runner_id)
   end
 end

@@ -1,16 +1,20 @@
-<h1>Edit Profile</h1>
-<%= form_for @runner do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %><br>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :password %> 
-  <%= f.text_field :password %><br> <!-- make password hidden -->
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
-  <%= f.label :gender %> <!-- might make this some kind of m/f/other dropdown -->
-  <%= f.text_field :gender %><br>
-
-  <%= f.submit %>
-
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h3>Edit Profile</h3>
+      <%= bootstrap_form_for(@runner) do |f| %>
+        <%= f.text_field :username %>
+        <%= f.email_field :email %>
+        <%= f.password_field :password %>
+        <%= f.text_field :name %>
+        <%= f.number_field :age %>
+        <%= f.form_group :gender, label: { text: "Gender:" } do %>
+          <%= f.radio_button :gender, "M", label: "M", inline: true %>
+          <%= f.radio_button :gender, "F", label: "F", inline: true %>
+          <%= f.radio_button :gender, "O", label: "Other", inline: true %>
+        <% end %>
+        <%= f.submit "Save" %>
+      <% end %>
+    </div>
+  </div>
+</div>

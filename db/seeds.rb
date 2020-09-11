@@ -21,16 +21,17 @@ RankCategory.create(name: "grandmaster")
                 name: Faker::Name.name, 
                 age: rand(1..99),
                 gender: Faker::Gender.type,
-                rank_category: RankCategory.find_by(name: "bronze"))
+                rank_category: RankCategory.find_by(name: "bronze"),
+                points: rand(0..99))
 end
 
 # in_date_period = random date in current year
 10.times do 
-  Race.create(race_type: ["distance", "sped"].sample, length: "#{rand(1..26)} miles", elevation_increase: rand(1..500), elevation_decrease:rand(1..500), expiration_date: Faker::Date.in_date_period)
+  Race.create(race_type: ["distance", "speed"].sample, length: "#{rand(1..26)} miles", elevation_increase: rand(1..500), elevation_decrease:rand(1..500), expiration_date: Faker::Date.in_date_period, created_by: Runner.all.sample.id)
 end
 
 60.times do
-  Registration.create(runner: Runner.all.sample, race: Race.all.sample, completed: [true, false].sample, finish_time: rand(10..30))
+  Registration.create(runner: Runner.all.sample, race: Race.all.sample, completed: [true, false].sample, finish_time_mins: rand(10..30), finish_time_secs: rand(0..59))
 end
 
 10.times do 

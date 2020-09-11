@@ -167,27 +167,35 @@ now we're signed up for two races
 bootstrapped --> 'runners/show'
 for the race that already existed before, we'll preseed with some finish times by other runners
 pretend we've finished it too, input our own finish time
-WAITING ON MERGE 'registrations/edit'
+bootstrapped --> 'registrations/edit'
 now logout, log back in as the person who created that race
 'sessions/logout'
 'sessions/login'
 check out their points and ranking compared to others
 bootstrapped --> 'races/show'
 they see oh cool everyone's done with the race let's close it out
-WAITING ON MERGE 'races/edit'
+bootstrapped --> 'races/destroy' ?
 now go back to the rankings, cool our point value has changed, it's all been adjusted a bit
 bootstrapped --> 'races/show'
 bootstrapped --> '/rank_categories'
 
 
 
-add friend and edit profile and delete account buttons 
-race buttons on race show page
-button to create new race... maybe on the top right of the nav bar even?
-logout button, also top right or something
-method to sort runners for rank categories
-add migration for profile photo
-something's up with the race types -- need to clarify what they mean and modify new race form accordingly
-maybe a grid for the friends display on the runner show page
+DONE --> add friend and edit profile and delete account buttons 
+DONE --> race buttons on race show page
+DONE --> button to create new race... maybe on the top right of the nav bar even?
+DONE --> logout button, also top right or something
+DONE --> add profile photo attribute to runners
+DONE --> sort runners by name or whatever on the index page
+DONE --> method to sort runners for rank categories
 
+fix finish time input form
+change profile photo to either url signed up with or default
+something's up with the race types -- need to clarify what they mean and modify new race form accordingly
+get the 00 seconds to show properly 
+validations
 careful seeding
+sort places by seconds as well as minutes
+maybe a grid for the friends display on the runner show page
+add hours to finish time or just input 87 minutes or whatever.
+maybe fix the "race is now closed" thing but w/e
