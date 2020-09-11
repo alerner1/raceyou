@@ -2,6 +2,11 @@ class Race < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :runners, through: :registrations
   
+  #Validations
+
+  validates :length, :expiration_date, :created_by, presence: true
+  validates :length, numericality: {greater_than: 0}
+
   def end_of_race
     # when a race ends -- ie its expiration date passes -- the program should go through each runner, look at their results, and adjust their ranking accordingly
     # of course, that's somewhat difficult, as that probably needs to be done on startup?
