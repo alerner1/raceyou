@@ -14,8 +14,7 @@ class Runner < ApplicationRecord
   validates :age, numericality: {greater_than_or_equal_to: 12}
   
 
-
-  # so we can seed with a password
+# so we can seed with a password
   # source: https://stackoverflow.com/questions/31026248/encrypt-users-password-in-seed-file
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -24,13 +23,14 @@ class Runner < ApplicationRecord
   end
 
   def points=(points) # custom writer so they can't be < 0 at any time
-    if points
-      points = 0 unless points > 0
+    if points && points < 0
+      points = 0
     end
     write_attribute(:points, points)
   end
 
   def self.categorize_on_signup(mins, secs)
+    
     case mins.to_i
     when 35..100
       category = "bronze"
@@ -91,10 +91,6 @@ class Runner < ApplicationRecord
     end
   end
 
-  def self.sort_by_points(runners)
-    runners.sort_by{ |r| r.points }
-  end
-
   def adjust_ranking(race)
     # get their place
     registration = self.registrations.find_by(race_id: race.id)
@@ -102,26 +98,17 @@ class Runner < ApplicationRecord
     category = self.rank_category
     points = self.points
 
-    # def an easier way to do this -- just preserve the initial race.runners array by assigning it to a different variable
-    # pull point and category values from there
-    # but whatever not changing it now, will do it if there's time for cleanup
-    all_previous_points = []
-    all_previous_categories = []
-    race.runners.each do |runner|
-      all_previous_points[runner.id] = runner.points
-      all_previous_categories[runner.id] = runner.rank_category
-    end
-
     race.runners.each do |runner|
       other_registration = runner.registrations.find_by(race_id: race.id)
       other_place = other_registration.place
-      other_category = all_previous_categories[runner.id]
-      other_points = all_previous_points[runner.id]
+      other_category = runner.rank_category
+      other_points = runner.points
       point_differential = 0
 
       # their place is a greater number than mine, aka i beat them
       if other_place > place 
         point_differential = 12
+
         # if they have a higher rank overall
         if other_points > points
           
@@ -150,13 +137,19 @@ class Runner < ApplicationRecord
       end
       # use point_differential to get new points total
       self.update(points: self.points + point_differential)
+      
       # then call method that assigns a category based on points total
       self.categorize_by_points
     end  
     
   end
 
+  
   def self.sort_by_name #yes, first name, whatever
     Runner.all.sort_by{ |r| r.name.capitalize }
+  end
+
+  def self.sort_by_points(runners)
+    runners.sort_by{ |r| r.points }
   end
 end
