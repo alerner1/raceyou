@@ -5,15 +5,15 @@
     <div class="d-flex flex-column mx-5">
       <div class="d-flex flex-row justify-content-between">
         <p class="font-weight-bold">Length</p>
-        <p><%= @race.length %></p>
+        <p><%= "#{@race.length} #{@race.length_units}"%></p>
       </div>
       <div class="d-flex flex-row justify-content-between">
         <p class="font-weight-bold">Elevation Increase</p>
-        <p><%= @race.elevation_increase %> feet</p>
+        <p><%= "#{@race.elevation_increase} #{@race.elevation_increase_units}" %> </p>
       </div>
       <div class="d-flex flex-row justify-content-between">
         <p class="font-weight-bold mr-5">Elevation Decrease</p>
-        <p><%= @race.elevation_decrease %> feet</p>
+        <p><%= "#{@race.elevation_decrease} #{@race.elevation_decrease_units}" %></p>
       </div>
       <div class="d-flex flex-row justify-content-between">
         <p class="font-weight-bold">Expires</p>

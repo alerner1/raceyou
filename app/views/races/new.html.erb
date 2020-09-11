@@ -3,9 +3,12 @@
     <div class="col-6">
       <h1>New Race</h1>
       <%= bootstrap_form_for @race do |f| %>
-        <%= f.text_field :length %>
+        <%= f.number_field :length %>
+        <%= f.select :length_units, ["miles", "kilometers"], layout: :inline  %>
         <%= f.number_field :elevation_increase %>
+        <%= f.select :elevation_increase_units, ["feet", "meters"], layout: :inline  %>
         <%= f.number_field :elevation_decrease %>
+        <%= f.select :elevation_decrease_units, ["feet", "meters"], layout: :inline  %>
         <%= f.date_field :expiration_date, label: "Expires" %>
         <%= f.collection_select :created_by, Runner.all, :id, :name %>
         <%= f.submit %>

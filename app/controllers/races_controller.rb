@@ -70,6 +70,6 @@ class RacesController < ApplicationController
   end
 
   def race_params
-    params.require(:race).permit(:length, :elevation_increase, :elevation_decrease, :expiration_date, :closed, :created_by)
+    params.require(:race).permit(:length, :length_units, :elevation_increase, :elevation_increase_units, :elevation_decrease, :elevation_decrease_units, :expiration_date, :closed, :created_by)
   end
 end
