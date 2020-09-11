@@ -10,6 +10,7 @@ class Runner < ApplicationRecord
   #Validations
   validates :name, :email, :age, :password, presence: true
   validates :name, uniqueness: true
+  validates :email, uniqueness: true
   validates :age, numericality: {greater_than_or_equal_to: 12}
   
 
