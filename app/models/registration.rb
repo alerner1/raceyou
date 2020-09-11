@@ -9,4 +9,12 @@ class Registration < ApplicationRecord
       "No"
     end
   end
+
+  def display_time
+    if finish_time_secs < 10
+      finish_time_secs = "0" + finish_time_secs.to_s
+    end
+
+    "#{finish_time_mins.to_s}:#{finish_time_secs}"
+  end
 end

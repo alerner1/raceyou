@@ -189,9 +189,10 @@ DONE --> add profile photo attribute to runners
 DONE --> sort runners by name or whatever on the index page
 DONE --> method to sort runners for rank categories
 DONE --> fix finish time input form
-change profile photo to either url signed up with or default
-something's up with the race types -- need to clarify what they mean and modify new race form accordingly
-get the 00 seconds to show properly 
+DONE --> change profile photo to either url signed up with or default
+DONE --> something's up with the race types -- need to clarify what they mean and modify new race form accordingly
+DONE --> get the 00 seconds to show properly 
+units
 validations
 careful seeding
 sort places by seconds as well as minutes

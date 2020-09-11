@@ -1,12 +1,8 @@
-<h1 class="text-center"><%= Runner.all.find(@race.created_by).name %>'s Race</h1>
+<h1 class="text-center"><%= link_to Runner.all.find(@race.created_by.to_i).name, runner_path(Runner.all.find(@race.created_by.to_i)) %>'s Race</h1>
 <div class="d-flex mt-5">
   <div class="d-flex flex-column pr-5 mr-5 mt-5">
     <h3 class="ml-5">Race details:</h3>
     <div class="d-flex flex-column mx-5">
-      <div class="d-flex flex-row justify-content-between">
-        <p class="font-weight-bold">Type</p>
-        <p><%= @race.race_type %></p>
-      </div>
       <div class="d-flex flex-row justify-content-between">
         <p class="font-weight-bold">Length</p>
         <p><%= @race.length %></p>
@@ -37,7 +33,7 @@
               <%= button_to "Enter Finish Time", edit_registration_path(@current_user.registrations.find_by(race_id: @race.id)), method: :get, class: "btn btn-outline-success my-2 my-sm-0 mr-2" %>
               <%= button_to "Back Out", registration_path(@current_user.registrations.find_by(race_id: @race.id)), method: :delete, data: {confirm: "Are you sure you want to back out of this race?"}, class: "btn btn-outline-success my-2 my-sm-0" %>
             <% else %>
-              <p>Your time: <%= @current_user.registrations.find_by(race_id: @race.id).finish_time_mins %>:<%= @current_user.registrations.find_by(race_id: @race.id).finish_time_secs %></p>
+              <p>Your time: <%= @current_user.registrations.find_by(race_id: @race.id).display_time %> </p>
             <% end %>
             <% if @current_user.id == @race.created_by.to_i && @race.closed == false %>
               <%= button_to "Close Race", race_path(@race), method: :patch, params: { :race => { :closed => true } }, class: "btn btn-outline-success my-2 my-sm-0 mx-2"%>
