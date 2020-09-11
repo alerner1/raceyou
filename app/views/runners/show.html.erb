@@ -1,7 +1,7 @@
 <div class="d-flex w-100">
   <!-- 100% of width: row. start of first 50%: img. start of second 50%: name/category/points-->
   <div class="d-flex w-50">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" class="rounded mx-auto">
+    <img src=<%= @runner.photo %> alt="" class="img img-thumbnail mx-auto">
   </div>
   <div class="d-flex flex-column justify-content-end w-50">
     <% if flash[:success] %>

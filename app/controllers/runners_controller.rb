@@ -21,6 +21,9 @@ class RunnersController < ApplicationController
 
   
   def create
+    if params[:runner][:photo] == ""
+      params[:runner][:photo] = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    end
     params[:runner][:rank_category_id] = Runner.categorize_on_signup(params[:runner][:five_k_mins], params[:runner][:five_k_secs])
     params[:runner][:points] = Runner.assign_initial_points(params[:runner][:rank_category_id])
 
@@ -42,7 +45,7 @@ class RunnersController < ApplicationController
   end
 
   def update
-    if @runner.update(runner_params(:username, :email, :password, :name, :gender, :points))
+    if @runner.update(runner_params(:username, :email, :password, :name, :gender, :points, :photo))
       redirect_to runner_path(@runner)
     else
       flash[:errors] = @runner.errors.full_messages

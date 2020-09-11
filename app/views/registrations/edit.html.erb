@@ -4,7 +4,8 @@
       <h3>Input your completed race stats:</h3>
       <%= bootstrap_form_for(@registration) do |f| %>
         <%= f.hidden_field :completed, :value => true %>
-        <%= f.number_field :finish_time_mins %>minutes <%=f.number_field :finish_time_secs%> seconds <br>
+        <%= f.number_field :finish_time_mins, label: "Minutes:", inline: true %> 
+        <%=f.number_field :finish_time_secs, label: "Seconds:", inline: true %> 
         <%= f.submit "Save" %>
       <% end %>
     </div>
