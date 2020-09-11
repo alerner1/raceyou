@@ -7,6 +7,13 @@ class Runner < ApplicationRecord
 
   has_secure_password
 
+  #Validations
+  validates :name, :email, :age, :password, presence: true
+  validates :name, uniqueness: true
+  validates :age, numericality: {greater_than_or_equal_to: 12}
+  
+
+
   # so we can seed with a password
   # source: https://stackoverflow.com/questions/31026248/encrypt-users-password-in-seed-file
   def self.digest(string)
