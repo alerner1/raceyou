@@ -1,6 +1,7 @@
 class Registration < ApplicationRecord
   belongs_to :runner
   belongs_to :race
+  validates :race_id, uniqueness: { scope: :runner_id }
 
   def is_completed?
     if self.completed==true
